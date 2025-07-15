@@ -26,10 +26,11 @@ Visit Swagger docs: http://localhost:8000/rs_microservice/docs
 Check if the service is up and running.
 - Endpoint: GET /health
 - Response:
-  ```{
+  ```
+  {
   "status": "healthy"
-}
-```
+  }
+  ```
 
 ## 📌 API Endpoints
 
