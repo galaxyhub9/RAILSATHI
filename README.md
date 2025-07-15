@@ -14,7 +14,7 @@ cd RailSathiBE
 ```
 cp .env.example .env
 ```
--Edit .env and provide values like DB credentials, mail settings, etc.
+- Edit .env and provide values like DB credentials, mail settings, etc.
 
 ### Run Docker
 ```
@@ -48,3 +48,18 @@ All endpoints are prefixed with `/rs_microservice`.
 | `GET`      | `/health`                                 | Health check endpoint                   |
 | `GET`      | `/docs`                                   | Swagger UI for interactive API docs     |
 
+## Assumptions & Design Decisions
+
+- Authentication and user management are not implemented; email alerts assume static war room users.
+- Tables like `rail_sathi_railsathicomplain`, `rail_sathi_railsathicomplainmedia`, `trains_traindetails` must be manually created in PostgreSQL.
+- PostgreSQL is used directly via `psycopg2`, no ORM is used.
+
+## Key Features
+- PostgreSQL integration with raw SQL queries.
+- Swagger/OpenAPI documentation at `/docs`.
+- Dockerized setup with PostgreSQL and FastAPI.
+
+## Security & Best Practices
+- Sensitive config (DB credentials) are stored in a `.env` file and not committed to Git.
+- Docker environment uses isolated containers for DB and app.
+  
