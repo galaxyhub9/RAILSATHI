@@ -42,6 +42,13 @@ app.add_middleware(
 async def root():
     return {"message": "Rail Sathi Microservice is running"}
 
+@app.get("/items/")
+async def items():
+    return {"message": "items endpoint working"}
+
+@app.get("/")
+async def items():
+    return {"message": "RAILSATHI HOME PAGE"}
 
 class RailSathiComplainMediaResponse(BaseModel):
     id: int
@@ -153,7 +160,6 @@ async def get_complaints_by_date_endpoint(date_str: str, mobile_number: Optional
         logger.error(f"Error getting complaints by date {date_str}: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-@app.post("/rs_microservice/complaint/add", response_model=RailSathiComplainResponse)
 @app.post("/rs_microservice/complaint/add/", response_model=RailSathiComplainResponse)
 async def create_complaint_endpoint_threaded(
     pnr_number: Optional[str] = Form(None),
